@@ -19,3 +19,11 @@ const Route = use('Route')
 Route.get('/', () => {
   return { message: "Welcome to Uni-T v2 Server!", timestamp: Date.now(), version: "2.0.0" }
 })
+
+
+Route.get('/school', 'User/SchoolController.fetch')
+
+Route.get('/admin/school', 'Admin/SchoolController.fetch')
+Route.post('/admin/school', 'Admin/SchoolController.add')
+Route.delete('/admin/school/:id', 'Admin/SchoolController.remove')
+Route.put('/admin/school/:id', 'Admin/SchoolController.edit')

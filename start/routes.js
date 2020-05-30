@@ -21,7 +21,9 @@ Route.get('/', () => {
 })
 
 
-Route.get('/school', 'User/SchoolController.fetch')
+Route.get('/user/school', 'User/SchoolController.fetch')
+Route.post('/user/register', 'User/UserController.register')
+
 
 Route.get('/admin/school', 'Admin/SchoolController.fetch')
 Route.post('/admin/school', 'Admin/SchoolController.add')

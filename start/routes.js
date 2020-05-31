@@ -22,7 +22,7 @@ Route.get('/', () => {
 
 
 Route.get('/user/school', 'User/SchoolController.fetch')
-Route.post('/user/register', 'User/UserController.register')
+Route.post('/user/register', 'User/UserController.register').validator('User/Register')
 
 
 Route.get('/admin/school', 'Admin/SchoolController.fetch')

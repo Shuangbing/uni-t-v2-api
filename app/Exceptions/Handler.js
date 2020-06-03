@@ -21,10 +21,25 @@ class ExceptionHandler extends BaseExceptionHandler {
    * @return {void}
    */
   async handle(error, { request, response }) {
-    response.status(error.status).send({
-      statusCode: error.status,
-      ...error.messages.shift()
-    })
+
+    const errorMessage = require('./ErrorMessage')
+    if (errorMessage[error.name]) {
+      response.status(400).send({
+        statusCode: 400,
+        message: errorMessage[error.name]
+      })
+      return
+    }
+    
+    if (error.messages) {
+      response.status(error.status).send({
+        statusCode: error.status,
+        ...error.messages.shift()
+      })
+      return
+    }
+
+    return super.handle(...arguments)
   }
 
   /**

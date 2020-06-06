@@ -4,8 +4,8 @@
 const Model = use('Model')
 
 class School extends Model {
-    function() {
-        return this.hasOne('App/Models/Function')
+    script() {
+        return this.hasOne('App/Models/Script')
     }
 }
 

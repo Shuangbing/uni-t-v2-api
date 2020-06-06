@@ -27,3 +27,4 @@ Route.post('/user/register', 'User/UserController.register').validator('User/Reg
 
 
 Route.resource('admin/schools', 'Admin/SchoolController').apiOnly()
+Route.resource('admin/scripts', 'Admin/ScriptController').apiOnly()

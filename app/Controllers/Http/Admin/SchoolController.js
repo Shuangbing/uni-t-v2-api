@@ -3,11 +3,17 @@
 const School = use('App/Models/School')
 
 class SchoolController {
-    async fetch() {
+    async index() {
         return await School.all()
     }
 
-    async add({ request, response }) {
+    async show({ request, response }) {
+        const { id } = request.params
+        const school = await School.find(id)
+        return school
+    }
+
+    async store({ request, response }) {
         const { title, enable } = request.post()
         const school = new School()
 
@@ -18,16 +24,16 @@ class SchoolController {
         return school
     }
 
-    async remove({ request, response }) {
+    async destroy({ request, response }) {
         const { id } = request.params
         const school = await School.find(id)
         return await school.delete()
     }
 
-    async edit({ request, response }) {
+    async update({ request, response }) {
         const { id } = request.params
         const { title, enable } = request.post()
-        
+
         const school = await School.find(id)
         school.title = title
         school.enable = enable

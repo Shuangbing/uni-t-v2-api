@@ -26,7 +26,4 @@ Route.post('/user/login', 'User/UserController.login').validator('User/Login')
 Route.post('/user/register', 'User/UserController.register').validator('User/Register')
 
 
-Route.get('/admin/school', 'Admin/SchoolController.fetch')
-Route.post('/admin/school', 'Admin/SchoolController.add')
-Route.delete('/admin/school/:id', 'Admin/SchoolController.remove')
-Route.put('/admin/school/:id', 'Admin/SchoolController.edit')
+Route.resource('admin/schools', 'Admin/SchoolController').apiOnly()

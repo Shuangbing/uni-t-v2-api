@@ -3,10 +3,11 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class FunctionSchema extends Schema {
-  up () {
-    this.create('functions', (table) => {
+class ScriptSchema extends Schema {
+  up() {
+    this.create('scripts', (table) => {
       table.increments()
+      table.integer('school_id').unsigned().references('id').inTable('schools')
       table.text('timetable')
       table.text('wlan')
       table.text('attendance')
@@ -15,9 +16,9 @@ class FunctionSchema extends Schema {
     })
   }
 
-  down () {
-    this.drop('functions')
+  down() {
+    this.drop('scripts')
   }
 }
 
-module.exports = FunctionSchema
+module.exports = ScriptSchema

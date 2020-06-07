@@ -19,3 +19,13 @@ const Route = use('Route')
 Route.get('/', () => {
   return { message: "Welcome to Uni-T v2 Server!", timestamp: Date.now(), version: "2.0.0" }
 })
+
+
+Route.get('/user/school', 'User/SchoolController.fetch')
+Route.post('/user/login', 'User/UserController.login').validator('User/Login')
+Route.post('/user/register', 'User/UserController.register').validator('User/Register')
+
+Route.get('/user/school/timetable', 'User/SchoolController.timetable').middleware(['auth'])
+
+Route.resource('admin/schools', 'Admin/SchoolController').apiOnly()
+Route.resource('admin/scripts', 'Admin/ScriptController').apiOnly()
